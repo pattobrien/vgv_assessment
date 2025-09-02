@@ -5,3 +5,4 @@ linter:
     prefer_relative_imports: true
     always_use_package_imports: false
     public_member_api_docs: false
+    specify_nonobvious_property_types: false

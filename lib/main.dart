@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:vgv_assessment/common/app.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'common/app.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
