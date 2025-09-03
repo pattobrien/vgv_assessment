@@ -55,7 +55,7 @@ class MatcherPage extends ConsumerWidget {
                       Text(
                         'Swipe right to save favorites • Swipe left to pass',
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          color: Colors.white.withOpacity(0.8),
+                          color: Colors.white.withValues(alpha: 0.8),
                         ),
                         textAlign: TextAlign.center,
                       ),

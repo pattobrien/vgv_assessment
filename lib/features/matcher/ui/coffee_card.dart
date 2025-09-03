@@ -6,6 +6,7 @@ class CoffeeCard extends StatelessWidget {
   const CoffeeCard({
     required this.coffeeFile,
     required this.isMatched,
+    super.key,
   });
 
   final SavedFile coffeeFile;
@@ -27,8 +28,8 @@ class CoffeeCard extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Colors.brown.shade800.withOpacity(0.1),
-              Colors.brown.shade900.withOpacity(0.3),
+              Colors.brown.shade800.withValues(alpha: 0.1),
+              Colors.brown.shade900.withValues(alpha: 0.3),
             ],
           ),
         ),
@@ -49,7 +50,7 @@ class CoffeeCard extends StatelessWidget {
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    Colors.black.withOpacity(0.7),
+                    Colors.black.withValues(alpha: 0.7),
                   ],
                   stops: const [0.6, 1.0],
                 ),
@@ -92,7 +93,7 @@ class CoffeeCard extends StatelessWidget {
                     Text(
                       'Swipe right to save ❤️',
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: Colors.white.withOpacity(0.8),
+                        color: Colors.white.withValues(alpha: 0.8),
                       ),
                     ),
                   ],
@@ -108,11 +109,11 @@ class CoffeeCard extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: Colors.red.withOpacity(0.9),
+                    color: Colors.red.withValues(alpha: 0.9),
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
+                        color: Colors.black.withValues(alpha: 0.3),
                         blurRadius: 4,
                         offset: const Offset(0, 2),
                       ),
@@ -133,7 +134,9 @@ class CoffeeCard extends StatelessWidget {
 }
 
 class LoadingCard extends StatelessWidget {
-  const LoadingCard();
+  const LoadingCard({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -151,8 +154,8 @@ class LoadingCard extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Colors.brown.shade800.withOpacity(0.1),
-              Colors.brown.shade900.withOpacity(0.3),
+              Colors.brown.shade800.withValues(alpha: 0.1),
+              Colors.brown.shade900.withValues(alpha: 0.3),
             ],
           ),
         ),
@@ -166,8 +169,8 @@ class LoadingCard extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Colors.brown.shade300.withOpacity(0.3),
-                    Colors.brown.shade600.withOpacity(0.6),
+                    Colors.brown.shade300.withValues(alpha: 0.3),
+                    Colors.brown.shade600.withValues(alpha: 0.6),
                   ],
                 ),
               ),
@@ -181,7 +184,7 @@ class LoadingCard extends StatelessWidget {
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    Colors.black.withOpacity(0.4),
+                    Colors.black.withValues(alpha: 0.4),
                   ],
                   stops: const [0.6, 1.0],
                 ),
@@ -200,7 +203,7 @@ class LoadingCard extends StatelessWidget {
                   const SizedBox(height: 24),
                   Icon(
                     Icons.coffee,
-                    color: Colors.white.withOpacity(0.9),
+                    color: Colors.white.withValues(alpha: 0.9),
                     size: 48,
                   ),
                   const SizedBox(height: 16),
@@ -225,6 +228,7 @@ class LoadingCard extends StatelessWidget {
 class ErrorCard extends StatelessWidget {
   const ErrorCard({
     required this.error,
+    super.key,
   });
 
   final String error;

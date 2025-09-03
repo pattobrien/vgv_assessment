@@ -24,13 +24,13 @@ class MainShellPage extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Colors.brown.shade900.withOpacity(0.9),
+                  Colors.brown.shade900.withValues(alpha: 0.9),
                   Colors.black87,
                 ],
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
+                  color: Colors.black.withValues(alpha: 0.3),
                   blurRadius: 8,
                   offset: const Offset(0, -2),
                 ),
@@ -43,7 +43,7 @@ class MainShellPage extends StatelessWidget {
               elevation: 0,
               type: BottomNavigationBarType.fixed,
               selectedItemColor: Colors.brown.shade300,
-              unselectedItemColor: Colors.white.withOpacity(0.6),
+              unselectedItemColor: Colors.white.withValues(alpha: 0.6),
               selectedLabelStyle: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 12,
@@ -58,7 +58,7 @@ class MainShellPage extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: tabsRouter.activeIndex == 0
-                          ? Colors.brown.shade300.withOpacity(0.2)
+                          ? Colors.brown.shade300.withValues(alpha: 0.2)
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -71,7 +71,7 @@ class MainShellPage extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: tabsRouter.activeIndex == 1
-                          ? Colors.brown.shade300.withOpacity(0.2)
+                          ? Colors.brown.shade300.withValues(alpha: 0.2)
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(12),
                     ),

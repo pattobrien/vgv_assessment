@@ -78,20 +78,20 @@ class FavoritesPage extends ConsumerWidget {
                               Icon(
                                 Icons.coffee_outlined,
                                 size: 64,
-                                color: Colors.white.withOpacity(0.5),
+                                color: Colors.white.withValues(alpha: 0.5),
                               ),
                               const SizedBox(height: 16),
                               Text(
                                 'No favorites yet',
                                 style: theme.textTheme.titleLarge?.copyWith(
-                                  color: Colors.white.withOpacity(0.7),
+                                  color: Colors.white.withValues(alpha: 0.7),
                                 ),
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                'Start swiping to save your favorite coffee images',
+                                'Start swiping to save your favorite images',
                                 style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: Colors.white.withOpacity(0.6),
+                                  color: Colors.white.withValues(alpha: 0.6),
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -122,7 +122,7 @@ class FavoritesPage extends ConsumerWidget {
                           Text(
                             'Error: $error',
                             style: theme.textTheme.bodyMedium?.copyWith(
-                              color: Colors.white.withOpacity(0.7),
+                              color: Colors.white.withValues(alpha: 0.7),
                             ),
                             textAlign: TextAlign.center,
                           ),
@@ -140,7 +140,7 @@ class FavoritesPage extends ConsumerWidget {
                           Text(
                             'Loading favorites...',
                             style: theme.textTheme.bodyLarge?.copyWith(
-                              color: Colors.white.withOpacity(0.8),
+                              color: Colors.white.withValues(alpha: 0.8),
                             ),
                           ),
                         ],

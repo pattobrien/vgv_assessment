@@ -35,7 +35,7 @@ class FavoritesGrid extends ConsumerWidget {
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
+                  color: Colors.black.withValues(alpha: 0.3),
                   blurRadius: 8,
                   offset: const Offset(0, 4),
                 ),
@@ -62,7 +62,7 @@ class FavoritesGrid extends ConsumerWidget {
                         begin: Alignment.topRight,
                         end: Alignment.center,
                         colors: [
-                          Colors.black.withOpacity(0.4),
+                          Colors.black.withValues(alpha: 0.4),
                           Colors.transparent,
                         ],
                         stops: const [0.0, 0.7],
@@ -85,9 +85,7 @@ class FavoritesGrid extends ConsumerWidget {
                       child: Container(
                         padding: const EdgeInsets.all(6),
                         decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(
-                            0.6,
-                          ),
+                          color: Colors.black.withValues(alpha: 0.6),
                           shape: BoxShape.circle,
                         ),
                         child: Icon(
@@ -110,21 +108,16 @@ class FavoritesGrid extends ConsumerWidget {
   void _showFullScreenImage(BuildContext context, Uint8List imageBytes) {
     showDialog<void>(
       context: context,
-      barrierDismissible: true,
       builder: (BuildContext context) {
         return Dialog.fullscreen(
-          backgroundColor: Colors.black.withOpacity(0.9),
+          backgroundColor: Colors.black.withValues(alpha: 0.9),
           child: Stack(
             children: [
               // Full screen image
               Center(
                 child: InteractiveViewer(
                   minScale: 0.5,
-                  maxScale: 4.0,
-                  child: Image.memory(
-                    imageBytes,
-                    fit: BoxFit.contain,
-                  ),
+                  child: Image.memory(imageBytes, fit: BoxFit.contain),
                 ),
               ),
               // Close button
@@ -136,7 +129,7 @@ class FavoritesGrid extends ConsumerWidget {
                   icon: Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.5),
+                      color: Colors.black.withValues(alpha: 0.5),
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
