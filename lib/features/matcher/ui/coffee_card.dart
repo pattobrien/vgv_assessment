@@ -144,36 +144,76 @@ class LoadingCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
+      clipBehavior: Clip.antiAlias,
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
             colors: [
-              Colors.brown.shade100,
-              Colors.brown.shade200,
+              Colors.brown.shade800.withOpacity(0.1),
+              Colors.brown.shade900.withOpacity(0.3),
             ],
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Stack(
+          fit: StackFit.expand,
           children: [
-            const CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.brown),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Brewing your next coffee...',
-              style: theme.textTheme.titleMedium?.copyWith(
-                color: Colors.brown.shade800,
-                fontWeight: FontWeight.w500,
+            // Background gradient to match CoffeeCard
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.brown.shade300.withOpacity(0.3),
+                    Colors.brown.shade600.withOpacity(0.6),
+                  ],
+                ),
               ),
             ),
-            const SizedBox(height: 8),
-            Icon(
-              Icons.coffee,
-              color: Colors.brown.shade600,
-              size: 32,
+
+            // Dark overlay for consistency
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.transparent,
+                    Colors.black.withOpacity(0.4),
+                  ],
+                  stops: const [0.6, 1.0],
+                ),
+              ),
+            ),
+
+            // Content
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    strokeWidth: 3,
+                  ),
+                  const SizedBox(height: 24),
+                  Icon(
+                    Icons.coffee,
+                    color: Colors.white.withOpacity(0.9),
+                    size: 48,
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    'Brewing your next coffee...',
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
           ],
         ),
