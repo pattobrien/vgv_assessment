@@ -10,10 +10,7 @@ class MatcherPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = Theme.of(context);
-
     return Scaffold(
-      extendBodyBehindAppBar: true,
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -45,7 +42,7 @@ class MatcherPage extends ConsumerWidget {
                       const SizedBox(height: 8),
                       Text(
                         'Discover Your Perfect Coffee',
-                        style: theme.textTheme.titleLarge?.copyWith(
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                         ),
@@ -54,7 +51,7 @@ class MatcherPage extends ConsumerWidget {
                       const SizedBox(height: 4),
                       Text(
                         'Swipe right to save favorites • Swipe left to pass',
-                        style: theme.textTheme.bodyMedium?.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Colors.white.withValues(alpha: 0.8),
                         ),
                         textAlign: TextAlign.center,
@@ -67,9 +64,6 @@ class MatcherPage extends ConsumerWidget {
                 Expanded(
                   child: const CoffeeSwiper(),
                 ),
-
-                // Bottom spacing
-                // const SizedBox(height: 20),
               ],
             ),
           ),

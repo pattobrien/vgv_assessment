@@ -9,7 +9,7 @@ import '../../../services/file_cache/file_cache.dart';
 import '../../../services/file_cache/saved_file.dart';
 import 'match_state.dart';
 
-class MatchNotifier extends FamilyAsyncNotifier<MatchState, int> {
+class MatchNotifier extends AutoDisposeFamilyAsyncNotifier<MatchState, int> {
   MatchNotifier();
 
   FileCache get fileCache => ref.read(fileCacheProvider);
@@ -59,7 +59,7 @@ class MatchNotifier extends FamilyAsyncNotifier<MatchState, int> {
   }
 }
 
-final matchNotifierProvider =
-    AsyncNotifierProvider.family<MatchNotifier, MatchState, int>(
+final matchNotifierProvider = AsyncNotifierProvider.family
+    .autoDispose<MatchNotifier, MatchState, int>(
       MatchNotifier.new,
     );
