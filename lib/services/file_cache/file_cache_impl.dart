@@ -10,9 +10,11 @@ import 'file_cache.dart';
 import 'file_not_found_exception.dart';
 
 class FileCacheImpl implements FileCache {
-  const FileCacheImpl({
+  FileCacheImpl({
     required this.root,
-  });
+  }) {
+    init();
+  }
 
   factory FileCacheImpl.memory() {
     final fs = MemoryFileSystem();
@@ -26,13 +28,19 @@ class FileCacheImpl implements FileCache {
 
   final Directory root;
 
+  Directory get _imagesDir => root.childDirectory('images');
+
+  void init() {
+    _imagesDir.createSync(recursive: true);
+  }
+
   String _getFilePath(String filename) {
-    return '${root.path}/$filename';
+    return _imagesDir.childFile(filename).path;
   }
 
   @override
   Future<List<CoffeeFile>> getFiles() async {
-    final files = root.listSync().whereType<File>().toList();
+    final files = _imagesDir.listSync().whereType<File>().toList();
     return files.map((file) {
       final filename = path.basename(file.path);
       return CoffeeFile(
