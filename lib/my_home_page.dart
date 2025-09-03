@@ -14,8 +14,8 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Coffee Swiper'),
       ),
-      body: const Center(
-        child: Padding(
+      body: Center(
+        child: Container(
           padding: EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

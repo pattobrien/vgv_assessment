@@ -6,3 +6,6 @@ linter:
     always_use_package_imports: false
     public_member_api_docs: false
     specify_nonobvious_property_types: false
+    prefer_const_constructors: false
+    prefer_const_constructors_in_immutables: false
+    prefer_const_literals_to_create_immutables: false

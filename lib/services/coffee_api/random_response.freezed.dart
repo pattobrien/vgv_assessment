@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$RandomResponse {
 
- String get file;
+ Uri get file;
 /// Create a copy of RandomResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $RandomResponseCopyWith<$Res>  {
   factory $RandomResponseCopyWith(RandomResponse value, $Res Function(RandomResponse) _then) = _$RandomResponseCopyWithImpl;
 @useResult
 $Res call({
- String file
+ Uri file
 });
 
 
@@ -68,7 +68,7 @@ class _$RandomResponseCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? file = null,}) {
   return _then(_self.copyWith(
 file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
-as String,
+as Uri,
   ));
 }
 
@@ -150,7 +150,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String file)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Uri file)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RandomResponse() when $default != null:
 return $default(_that.file);case _:
@@ -171,7 +171,7 @@ return $default(_that.file);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String file)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Uri file)  $default,) {final _that = this;
 switch (_that) {
 case _RandomResponse():
 return $default(_that.file);}
@@ -188,7 +188,7 @@ return $default(_that.file);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String file)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Uri file)?  $default,) {final _that = this;
 switch (_that) {
 case _RandomResponse() when $default != null:
 return $default(_that.file);case _:
@@ -206,7 +206,7 @@ class _RandomResponse extends RandomResponse {
   const _RandomResponse({required this.file}): super._();
   factory _RandomResponse.fromJson(Map<String, dynamic> json) => _$RandomResponseFromJson(json);
 
-@override final  String file;
+@override final  Uri file;
 
 /// Create a copy of RandomResponse
 /// with the given fields replaced by the non-null parameter values.
@@ -241,7 +241,7 @@ abstract mixin class _$RandomResponseCopyWith<$Res> implements $RandomResponseCo
   factory _$RandomResponseCopyWith(_RandomResponse value, $Res Function(_RandomResponse) _then) = __$RandomResponseCopyWithImpl;
 @override @useResult
 $Res call({
- String file
+ Uri file
 });
 
 
@@ -261,7 +261,7 @@ class __$RandomResponseCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? file = null,}) {
   return _then(_RandomResponse(
 file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
-as String,
+as Uri,
   ));
 }
 

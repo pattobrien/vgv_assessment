@@ -7,7 +7,7 @@ part of 'random_response.dart';
 // **************************************************************************
 
 _RandomResponse _$RandomResponseFromJson(Map<String, dynamic> json) =>
-    _RandomResponse(file: json['file'] as String);
+    _RandomResponse(file: Uri.parse(json['file'] as String));
 
 Map<String, dynamic> _$RandomResponseToJson(_RandomResponse instance) =>
-    <String, dynamic>{'file': instance.file};
+    <String, dynamic>{'file': instance.file.toString()};

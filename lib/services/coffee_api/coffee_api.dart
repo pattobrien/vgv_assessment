@@ -1,6 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:riverpod/riverpod.dart';
 
 import 'random_response.dart';
+
+final coffeeApiProvider = Provider<CoffeeApi>((ref) {
+  return CoffeeApi();
+});
 
 class CoffeeApi {
   CoffeeApi()

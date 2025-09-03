@@ -29,10 +29,10 @@ class FileCacheImpl implements FileCache {
   }
 
   @override
-  Future<SavedFile> getFile(String filename) async {
+  Future<SavedFile?> getFile(String filename) async {
     final path = _getFilePath(filename);
     if (!root.childFile(path).existsSync()) {
-      throw FileNotFoundException(path);
+      return null;
     }
     final bytes = await root.childFile(path).readAsBytes();
     return SavedFile(filename: filename, imageBytes: bytes);

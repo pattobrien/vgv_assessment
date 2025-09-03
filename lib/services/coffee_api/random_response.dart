@@ -4,13 +4,13 @@ part 'random_response.freezed.dart';
 part 'random_response.g.dart';
 
 /// {@template random_response}
-/// Response for /random endpoint.
+/// Response object for `/random.json` endpoint.
 /// {@endtemplate}
 @freezed
 sealed class RandomResponse with _$RandomResponse {
   /// {@macro random_response}
   const factory RandomResponse({
-    required String file,
+    required Uri file,
   }) = _RandomResponse;
 
   const RandomResponse._();
