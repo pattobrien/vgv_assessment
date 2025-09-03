@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../services/file_cache/file_cache.dart';
+import '../../../services/file_cache/file_cache.dart';
 
 @RoutePage()
 class FavoritesPage extends ConsumerWidget {

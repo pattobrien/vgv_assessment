@@ -4,15 +4,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart' as path;
 
-import '../../services/coffee_api/coffee_api.dart';
-import '../../services/file_cache/file_cache.dart';
-import '../../services/file_cache/saved_file.dart';
+import '../../../services/coffee_api/coffee_api.dart';
+import '../../../services/file_cache/file_cache.dart';
+import '../../../services/file_cache/saved_file.dart';
 import 'match_state.dart';
-
-final matchNotifierProvider =
-    AsyncNotifierProvider.family<MatchNotifier, MatchState, int>(
-      MatchNotifier.new,
-    );
 
 class MatchNotifier extends FamilyAsyncNotifier<MatchState, int> {
   MatchNotifier();
@@ -36,18 +31,14 @@ class MatchNotifier extends FamilyAsyncNotifier<MatchState, int> {
       filename: filename,
       imageBytes: imageBytes!,
     );
-    final allFiles = await fileCache.getFiles();
-    print('# of files: ${allFiles.length}');
-    print('first file: ${allFiles.first.filename}');
-    print('this file: $filename');
-    final isMatched = allFiles.any((file) => file.filename == filename);
-    print('isMatched: $isMatched');
+    final isMatched = (await fileCache.getFile(filename)) != null;
     return MatchState(thisCoffee: thisCoffee, isMatched: isMatched);
   }
 
   Future<void> saveCoffee() async {
     if (state is! AsyncData<MatchState>) {
-      throw StateError('Expected AsyncData<MatchState>');
+      // throw StateError('Expected AsyncData<MatchState>');
+      return;
     }
     // TODO(pattobrien): decide if we should throw a warning/error to the user
     // if they try to save a coffee that is already saved
@@ -68,3 +59,8 @@ class MatchNotifier extends FamilyAsyncNotifier<MatchState, int> {
     ref.refresh(cachedFilesProvider);
   }
 }
+
+final matchNotifierProvider =
+    AsyncNotifierProvider.family<MatchNotifier, MatchState, int>(
+      MatchNotifier.new,
+    );

@@ -11,7 +11,7 @@ class MainShellPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoTabsRouter(
       routes: const [
-        MyHomeRoute(),
+        MatcherRoute(),
         FavoritesRoute(),
       ],
       builder: (context, child) {

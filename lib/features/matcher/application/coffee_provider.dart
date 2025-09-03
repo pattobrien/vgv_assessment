@@ -1,7 +1,7 @@
 import 'package:riverpod/riverpod.dart';
 
-import '../../services/coffee_api/coffee_api.dart';
-import '../../services/coffee_api/random_response.dart';
+import '../../../services/coffee_api/coffee_api.dart';
+import '../../../services/coffee_api/random_response.dart';
 
 final coffeeApiProvider = Provider<CoffeeApi>((ref) {
   return CoffeeApi();

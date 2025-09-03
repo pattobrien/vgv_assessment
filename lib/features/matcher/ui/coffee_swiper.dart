@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'match_notifier.dart';
+import '../application/match_notifier.dart';
 
 class CoffeeSwiper extends ConsumerWidget {
   const CoffeeSwiper({super.key});

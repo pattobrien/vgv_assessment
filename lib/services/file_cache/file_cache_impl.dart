@@ -1,4 +1,8 @@
+import 'dart:io' as io;
+
 import 'package:file/file.dart';
+import 'package:file/local.dart';
+import 'package:file/memory.dart';
 import 'package:path/path.dart' as path;
 
 import 'file_cache.dart';
@@ -9,6 +13,16 @@ class FileCacheImpl implements FileCache {
   const FileCacheImpl({
     required this.root,
   });
+
+  factory FileCacheImpl.memory() {
+    final fs = MemoryFileSystem();
+    return FileCacheImpl(root: fs.directory('/'));
+  }
+
+  factory FileCacheImpl.local(io.Directory root) {
+    const fs = LocalFileSystem();
+    return FileCacheImpl(root: fs.directory(root.path));
+  }
 
   final Directory root;
 

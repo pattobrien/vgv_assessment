@@ -12,7 +12,7 @@ class AppRouter extends RootStackRouter {
       page: MainShellRoute.page,
       initial: true,
       children: [
-        AutoRoute(page: MyHomeRoute.page),
+        AutoRoute(page: MatcherRoute.page),
         AutoRoute(page: FavoritesRoute.page),
       ],
     ),
