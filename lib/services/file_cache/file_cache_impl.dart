@@ -59,9 +59,15 @@ class FileCacheImpl implements FileCache {
   }
 
   @override
-  Future<void> deleteFile(String filename) async {
+  Future<void> deleteFile(
+    String filename, {
+    bool ignoreNotFound = false,
+  }) async {
     final path = _getFilePath(filename);
     if (!root.childFile(path).existsSync()) {
+      if (ignoreNotFound) {
+        return;
+      }
       throw FileNotFoundException(path);
     }
     await root.childFile(path).delete();

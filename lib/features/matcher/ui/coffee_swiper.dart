@@ -11,14 +11,14 @@ class CoffeeSwiper extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return CardSwiper(
       cardsCount: 20,
-      numberOfCardsDisplayed: 2,
+      numberOfCardsDisplayed: 4,
       onSwipe: (previousIndex, currentIndex, direction) async {
         switch (direction) {
           case CardSwiperDirection.left:
             final notifier = ref.watch(
               matchNotifierProvider(previousIndex).notifier,
             );
-            await notifier.deleteCoffee();
+            await notifier.swipeLeft();
             return true;
           case CardSwiperDirection.right:
             if (currentIndex == null) {
@@ -27,7 +27,7 @@ class CoffeeSwiper extends ConsumerWidget {
             final notifier = ref.watch(
               matchNotifierProvider(currentIndex).notifier,
             );
-            await notifier.saveCoffee();
+            await notifier.swipeRight();
 
             return true;
           case CardSwiperDirection.none:

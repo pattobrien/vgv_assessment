@@ -18,5 +18,5 @@ abstract interface class FileCache {
   Future<SavedFile?> getFile(String filename);
 
   Future<void> saveFile(SavedFile savedFile);
-  Future<void> deleteFile(String filename);
+  Future<void> deleteFile(String filename, {bool ignoreNotFound = false});
 }

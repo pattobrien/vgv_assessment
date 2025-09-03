@@ -17,25 +17,23 @@ class MatchNotifier extends FamilyAsyncNotifier<MatchState, int> {
 
   @override
   Future<MatchState> build(int index) async {
-    // final cachedFiles = await ref.watch(cachedFilesProvider.future);
     final response = await coffeeApi.getRandom();
     final filename = path.basename(response.file.toString());
-    // final appDir = await getApplicationDocumentsDirectory();
-    final imageBytes = await Dio()
-        .getUri<Uint8List>(
-          response.file,
-          options: Options(responseType: ResponseType.bytes),
-        )
-        .then((value) => value.data);
+
+    final imageResponse = await Dio().getUri<Uint8List>(
+      response.file,
+      options: Options(responseType: ResponseType.bytes),
+    );
     final thisCoffee = SavedFile(
       filename: filename,
-      imageBytes: imageBytes!,
+      imageBytes: imageResponse.data!,
     );
     final isMatched = (await fileCache.getFile(filename)) != null;
     return MatchState(thisCoffee: thisCoffee, isMatched: isMatched);
   }
 
-  Future<void> saveCoffee() async {
+  /// Match with this coffee.
+  Future<void> swipeRight() async {
     if (state is! AsyncData<MatchState>) {
       // throw StateError('Expected AsyncData<MatchState>');
       return;
@@ -46,17 +44,18 @@ class MatchNotifier extends FamilyAsyncNotifier<MatchState, int> {
     final thisCoffee = matchState.thisCoffee;
 
     await fileCache.saveFile(thisCoffee);
-    ref.refresh(cachedFilesProvider);
+    ref.invalidate(cachedFilesProvider);
   }
 
-  Future<void> deleteCoffee() async {
+  /// Don't match with this coffee.
+  Future<void> swipeLeft() async {
     if (state is! AsyncData<MatchState>) {
-      throw StateError('Expected AsyncData<MatchState>');
+      return;
     }
     final matchState = state.value!;
     final thisCoffee = matchState.thisCoffee;
-    await fileCache.deleteFile(thisCoffee.filename);
-    ref.refresh(cachedFilesProvider);
+    await fileCache.deleteFile(thisCoffee.filename, ignoreNotFound: true);
+    ref.invalidate(cachedFilesProvider);
   }
 }
 
