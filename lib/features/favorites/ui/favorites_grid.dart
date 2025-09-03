@@ -29,10 +29,7 @@ class FavoritesGrid extends ConsumerWidget {
         final fileCache = ref.watch(fileCacheProvider);
         final file = files[index];
         return GestureDetector(
-          onTap: () => _showFullScreenImage(
-            context,
-            Uint8List.fromList(file.imageBytes),
-          ),
+          onTap: () => _showFullScreenImage(context, file.imageBytes),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
@@ -81,9 +78,7 @@ class FavoritesGrid extends ConsumerWidget {
                     color: Colors.transparent,
                     child: InkWell(
                       onTap: () async {
-                        await fileCache.deleteFile(
-                          file.filename,
-                        );
+                        await fileCache.deleteFile(file.filename);
                         ref.invalidate(cachedFilesProvider);
                       },
                       borderRadius: BorderRadius.circular(20),

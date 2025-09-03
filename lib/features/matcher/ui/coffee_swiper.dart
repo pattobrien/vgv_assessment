@@ -12,24 +12,20 @@ class CoffeeSwiper extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return CardSwiper(
       cardsCount: 20,
-      numberOfCardsDisplayed: 1,
+      numberOfCardsDisplayed: 3,
       onSwipe: (previousIndex, currentIndex, direction) async {
+        final matchNotifier = ref.watch(
+          matchNotifierProvider(previousIndex).notifier,
+        );
         switch (direction) {
           case CardSwiperDirection.left:
-            final notifier = ref.watch(
-              matchNotifierProvider(previousIndex).notifier,
-            );
-            await notifier.swipeLeft();
+            await matchNotifier.swipeLeft();
             return true;
           case CardSwiperDirection.right:
             if (currentIndex == null) {
               return false;
             }
-            final notifier = ref.watch(
-              matchNotifierProvider(currentIndex).notifier,
-            );
-            await notifier.swipeRight();
-
+            await matchNotifier.swipeRight();
             return true;
           case CardSwiperDirection.none:
           case CardSwiperDirection.top:
