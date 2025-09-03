@@ -28,4 +28,7 @@ structure:
 
 ## Screenshots
 
-![Screenshot](docs/screenshot.png)
+<div style="display: flex; gap: 20px; justify-content: flex-start;">
+  <img src="docs/screenshot.png" alt="Screenshot" width="240">
+  <img src="docs/favorites.png" alt="Favorites" width="240">
+</div>
