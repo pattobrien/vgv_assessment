@@ -2,6 +2,13 @@
 
 Swipe left or right on your favorite coffee images!
 
+## Screenshots
+
+<div style="display: flex; gap: 20px; justify-content: flex-start;">
+  <img src="docs/screenshot.png" alt="Screenshot" width="240">
+  <img src="docs/favorites.png" alt="Favorites" width="240">
+</div>
+
 ## Getting Started
 
 1. Clone the repository
@@ -25,10 +32,3 @@ structure:
 - `lib/services/` - common API and cache services
 - `lib/main.dart` - the main entry point of the application
 - `test/` - unit and widget tests
-
-## Screenshots
-
-<div style="display: flex; gap: 20px; justify-content: flex-start;">
-  <img src="docs/screenshot.png" alt="Screenshot" width="240">
-  <img src="docs/favorites.png" alt="Favorites" width="240">
-</div>
