@@ -7,7 +7,6 @@ part '../match_state.freezed.dart';
 @freezed
 sealed class MatchState with _$MatchState {
   const factory MatchState({
-    // required List<SavedFile> allFiles,
     required CoffeeFile thisCoffee,
     required bool isMatched,
   }) = _MatchState;

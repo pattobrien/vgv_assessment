@@ -12,7 +12,6 @@ class FavoritesPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final files = ref.watch(cachedFilesProvider);
-    final theme = Theme.of(context);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -47,7 +46,7 @@ class FavoritesPage extends ConsumerWidget {
                       const SizedBox(height: 12),
                       Text(
                         'Favorites',
-                        style: theme.textTheme.headlineSmall?.copyWith(
+                        style: TextTheme.of(context).headlineSmall?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                         ),
@@ -56,7 +55,7 @@ class FavoritesPage extends ConsumerWidget {
                       const SizedBox(height: 8),
                       Text(
                         'Your Favorite Coffee Images',
-                        style: theme.textTheme.titleMedium?.copyWith(
+                        style: TextTheme.of(context).titleMedium?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.w500,
                         ),
@@ -83,16 +82,22 @@ class FavoritesPage extends ConsumerWidget {
                               const SizedBox(height: 16),
                               Text(
                                 'No favorites yet',
-                                style: theme.textTheme.titleLarge?.copyWith(
-                                  color: Colors.white.withValues(alpha: 0.7),
-                                ),
+                                style: TextTheme.of(context).titleLarge
+                                    ?.copyWith(
+                                      color: Colors.white.withValues(
+                                        alpha: 0.7,
+                                      ),
+                                    ),
                               ),
                               const SizedBox(height: 8),
                               Text(
                                 'Start swiping to save your favorite images',
-                                style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: Colors.white.withValues(alpha: 0.6),
-                                ),
+                                style: TextTheme.of(context).bodyMedium
+                                    ?.copyWith(
+                                      color: Colors.white.withValues(
+                                        alpha: 0.6,
+                                      ),
+                                    ),
                                 textAlign: TextAlign.center,
                               ),
                             ],
@@ -114,14 +119,14 @@ class FavoritesPage extends ConsumerWidget {
                           const SizedBox(height: 16),
                           Text(
                             'Error loading favorites',
-                            style: theme.textTheme.titleLarge?.copyWith(
+                            style: TextTheme.of(context).titleLarge?.copyWith(
                               color: Colors.white,
                             ),
                           ),
                           const SizedBox(height: 8),
                           Text(
                             'Error: $error',
-                            style: theme.textTheme.bodyMedium?.copyWith(
+                            style: TextTheme.of(context).bodyMedium?.copyWith(
                               color: Colors.white.withValues(alpha: 0.7),
                             ),
                             textAlign: TextAlign.center,
@@ -139,7 +144,7 @@ class FavoritesPage extends ConsumerWidget {
                           const SizedBox(height: 16),
                           Text(
                             'Loading favorites...',
-                            style: theme.textTheme.bodyLarge?.copyWith(
+                            style: TextTheme.of(context).bodyLarge?.copyWith(
                               color: Colors.white.withValues(alpha: 0.8),
                             ),
                           ),
