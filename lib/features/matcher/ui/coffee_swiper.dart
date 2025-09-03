@@ -3,6 +3,7 @@ import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../application/match_notifier.dart';
+import 'coffee_card.dart';
 
 class CoffeeSwiper extends ConsumerWidget {
   const CoffeeSwiper({super.key});
@@ -11,7 +12,7 @@ class CoffeeSwiper extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return CardSwiper(
       cardsCount: 20,
-      numberOfCardsDisplayed: 4,
+      numberOfCardsDisplayed: 1,
       onSwipe: (previousIndex, currentIndex, direction) async {
         switch (direction) {
           case CardSwiperDirection.left:
@@ -40,36 +41,14 @@ class CoffeeSwiper extends ConsumerWidget {
         final coffee = ref.watch(matchNotifierProvider(index));
 
         return coffee.when(
-          data: (data) {
-            final isMatched = data.isMatched;
-            return Stack(
-              children: [
-                Container(
-                  alignment: Alignment.center,
-                  color: Colors.blue,
-                  child: Image.memory(data.thisCoffee.imageBytes),
-                ),
-                Container(
-                  alignment: Alignment.bottomRight,
-                  child: isMatched
-                      ? const Icon(
-                          Icons.favorite,
-                          color: Colors.red,
-                          size: 48,
-                        )
-                      : null,
-                ),
-              ],
-            );
-          },
-          error: (error, stackTrace) => Container(
-            alignment: Alignment.center,
-            color: Colors.red,
-            child: Text('Error: $error' + stackTrace.toString()),
+          data: (data) => CoffeeCard(
+            coffeeFile: data.thisCoffee,
+            isMatched: data.isMatched,
           ),
-          loading: () => const Center(
-            child: CircularProgressIndicator(),
+          error: (error, stackTrace) => ErrorCard(
+            error: error.toString(),
           ),
+          loading: () => const LoadingCard(),
         );
       },
     );
