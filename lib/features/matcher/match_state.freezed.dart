@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 mixin _$MatchState {
 
 // required List<SavedFile> allFiles,
- SavedFile get thisCoffee; bool get isMatched;
+ CoffeeFile get thisCoffee; bool get isMatched;
 /// Create a copy of MatchState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -46,7 +46,7 @@ abstract mixin class $MatchStateCopyWith<$Res>  {
   factory $MatchStateCopyWith(MatchState value, $Res Function(MatchState) _then) = _$MatchStateCopyWithImpl;
 @useResult
 $Res call({
- SavedFile thisCoffee, bool isMatched
+ CoffeeFile thisCoffee, bool isMatched
 });
 
 
@@ -66,7 +66,7 @@ class _$MatchStateCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? thisCoffee = null,Object? isMatched = null,}) {
   return _then(_self.copyWith(
 thisCoffee: null == thisCoffee ? _self.thisCoffee : thisCoffee // ignore: cast_nullable_to_non_nullable
-as SavedFile,isMatched: null == isMatched ? _self.isMatched : isMatched // ignore: cast_nullable_to_non_nullable
+as CoffeeFile,isMatched: null == isMatched ? _self.isMatched : isMatched // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -149,7 +149,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( SavedFile thisCoffee,  bool isMatched)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( CoffeeFile thisCoffee,  bool isMatched)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MatchState() when $default != null:
 return $default(_that.thisCoffee,_that.isMatched);case _:
@@ -170,7 +170,7 @@ return $default(_that.thisCoffee,_that.isMatched);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( SavedFile thisCoffee,  bool isMatched)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( CoffeeFile thisCoffee,  bool isMatched)  $default,) {final _that = this;
 switch (_that) {
 case _MatchState():
 return $default(_that.thisCoffee,_that.isMatched);}
@@ -187,7 +187,7 @@ return $default(_that.thisCoffee,_that.isMatched);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( SavedFile thisCoffee,  bool isMatched)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( CoffeeFile thisCoffee,  bool isMatched)?  $default,) {final _that = this;
 switch (_that) {
 case _MatchState() when $default != null:
 return $default(_that.thisCoffee,_that.isMatched);case _:
@@ -206,7 +206,7 @@ class _MatchState extends MatchState {
   
 
 // required List<SavedFile> allFiles,
-@override final  SavedFile thisCoffee;
+@override final  CoffeeFile thisCoffee;
 @override final  bool isMatched;
 
 /// Create a copy of MatchState
@@ -239,7 +239,7 @@ abstract mixin class _$MatchStateCopyWith<$Res> implements $MatchStateCopyWith<$
   factory _$MatchStateCopyWith(_MatchState value, $Res Function(_MatchState) _then) = __$MatchStateCopyWithImpl;
 @override @useResult
 $Res call({
- SavedFile thisCoffee, bool isMatched
+ CoffeeFile thisCoffee, bool isMatched
 });
 
 
@@ -259,7 +259,7 @@ class __$MatchStateCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? thisCoffee = null,Object? isMatched = null,}) {
   return _then(_MatchState(
 thisCoffee: null == thisCoffee ? _self.thisCoffee : thisCoffee // ignore: cast_nullable_to_non_nullable
-as SavedFile,isMatched: null == isMatched ? _self.isMatched : isMatched // ignore: cast_nullable_to_non_nullable
+as CoffeeFile,isMatched: null == isMatched ? _self.isMatched : isMatched // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }

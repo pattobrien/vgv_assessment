@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
-class SavedFile {
-  const SavedFile({
+class CoffeeFile {
+  const CoffeeFile({
     required this.filename,
     required this.imageBytes,
   });

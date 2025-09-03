@@ -5,9 +5,9 @@ import 'package:file/local.dart';
 import 'package:file/memory.dart';
 import 'package:path/path.dart' as path;
 
+import 'coffee_file.dart';
 import 'file_cache.dart';
 import 'file_not_found_exception.dart';
-import 'saved_file.dart';
 
 class FileCacheImpl implements FileCache {
   const FileCacheImpl({
@@ -31,11 +31,11 @@ class FileCacheImpl implements FileCache {
   }
 
   @override
-  Future<List<SavedFile>> getFiles() async {
+  Future<List<CoffeeFile>> getFiles() async {
     final files = root.listSync().whereType<File>().toList();
     return files.map((file) {
       final filename = path.basename(file.path);
-      return SavedFile(
+      return CoffeeFile(
         filename: filename,
         imageBytes: file.readAsBytesSync(),
       );
@@ -43,17 +43,17 @@ class FileCacheImpl implements FileCache {
   }
 
   @override
-  Future<SavedFile?> getFile(String filename) async {
+  Future<CoffeeFile?> getFile(String filename) async {
     final path = _getFilePath(filename);
     if (!root.childFile(path).existsSync()) {
       return null;
     }
     final bytes = await root.childFile(path).readAsBytes();
-    return SavedFile(filename: filename, imageBytes: bytes);
+    return CoffeeFile(filename: filename, imageBytes: bytes);
   }
 
   @override
-  Future<void> saveFile(SavedFile savedFile) async {
+  Future<void> saveFile(CoffeeFile savedFile) async {
     final path = _getFilePath(savedFile.filename);
     await root.childFile(path).writeAsBytes(savedFile.imageBytes);
   }

@@ -1,12 +1,10 @@
-import 'dart:typed_data';
-
-import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart' as path;
 
 import '../../../services/coffee_api/coffee_api.dart';
+import '../../../services/file_cache/coffee_file.dart';
 import '../../../services/file_cache/file_cache.dart';
-import '../../../services/file_cache/saved_file.dart';
+import '../../../services/file_cache/file_cache_providers.dart';
 import 'match_state.dart';
 
 class MatchNotifier extends AutoDisposeFamilyAsyncNotifier<MatchState, int> {
@@ -18,24 +16,20 @@ class MatchNotifier extends AutoDisposeFamilyAsyncNotifier<MatchState, int> {
   @override
   Future<MatchState> build(int index) async {
     final response = await coffeeApi.getRandom();
-    final filename = path.basename(response.file.toString());
+    final coffeeFile = await _getCoffeeFile(response.file);
+    final isMatched = (await fileCache.getFile(coffeeFile.filename)) != null;
+    return MatchState(thisCoffee: coffeeFile, isMatched: isMatched);
+  }
 
-    final imageResponse = await Dio().getUri<Uint8List>(
-      response.file,
-      options: Options(responseType: ResponseType.bytes),
-    );
-    final thisCoffee = SavedFile(
-      filename: filename,
-      imageBytes: imageResponse.data!,
-    );
-    final isMatched = (await fileCache.getFile(filename)) != null;
-    return MatchState(thisCoffee: thisCoffee, isMatched: isMatched);
+  Future<CoffeeFile> _getCoffeeFile(Uri imageUrl) async {
+    final imageData = await coffeeApi.getImage(imageUrl);
+    final filename = path.basename(imageUrl.toString());
+    return CoffeeFile(filename: filename, imageBytes: imageData);
   }
 
   /// Match with this coffee.
   Future<void> swipeRight() async {
     if (state is! AsyncData<MatchState>) {
-      // throw StateError('Expected AsyncData<MatchState>');
       return;
     }
     // TODO(pattobrien): decide if we should throw a warning/error to the user

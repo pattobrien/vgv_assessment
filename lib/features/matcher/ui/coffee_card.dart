@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../services/file_cache/saved_file.dart';
+import '../../../services/file_cache/coffee_file.dart';
 
 class CoffeeCard extends StatelessWidget {
   const CoffeeCard({
@@ -9,13 +9,11 @@ class CoffeeCard extends StatelessWidget {
     super.key,
   });
 
-  final SavedFile coffeeFile;
+  final CoffeeFile coffeeFile;
   final bool isMatched;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Card(
       elevation: 8,
       shape: RoundedRectangleBorder(
@@ -79,10 +77,11 @@ class CoffeeCard extends StatelessWidget {
                         Expanded(
                           child: Text(
                             'Coffee',
-                            style: theme.textTheme.titleMedium?.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: Theme.of(context).textTheme.titleMedium
+                                ?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -92,7 +91,7 @@ class CoffeeCard extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       'Swipe right to save ❤️',
-                      style: theme.textTheme.bodySmall?.copyWith(
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: Colors.white.withValues(alpha: 0.8),
                       ),
                     ),

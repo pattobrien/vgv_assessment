@@ -1,22 +1,9 @@
-import 'package:riverpod/riverpod.dart';
-
-import 'saved_file.dart';
-
-final fileCacheProvider = Provider<FileCache>((ref) {
-  throw UnimplementedError(
-    'FileCache not implemented',
-  );
-});
-
-final cachedFilesProvider = FutureProvider<List<SavedFile>>((ref) async {
-  final fileCache = ref.watch(fileCacheProvider);
-  return fileCache.getFiles();
-});
+import 'coffee_file.dart';
 
 abstract interface class FileCache {
-  Future<List<SavedFile>> getFiles();
-  Future<SavedFile?> getFile(String filename);
+  Future<List<CoffeeFile>> getFiles();
+  Future<CoffeeFile?> getFile(String filename);
 
-  Future<void> saveFile(SavedFile savedFile);
+  Future<void> saveFile(CoffeeFile savedFile);
   Future<void> deleteFile(String filename, {bool ignoreNotFound = false});
 }

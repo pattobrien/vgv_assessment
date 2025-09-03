@@ -3,15 +3,15 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:vgv_assessment/features/matcher/ui/coffee_card.dart';
-import 'package:vgv_assessment/services/file_cache/saved_file.dart';
+import 'package:vgv_assessment/services/file_cache/coffee_file.dart';
 
 void main() {
   group('CoffeeCard', () {
-    late SavedFile mockSavedFile;
+    late CoffeeFile mockSavedFile;
 
     setUp(() {
       // Create a minimal valid PNG image (1x1 transparent pixel)
-      mockSavedFile = SavedFile(
+      mockSavedFile = CoffeeFile(
         filename: 'test_coffee.jpg',
         imageBytes: Uint8List.fromList([
           0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A, // PNG header

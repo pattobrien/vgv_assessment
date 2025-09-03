@@ -3,8 +3,8 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../services/file_cache/file_cache.dart';
-import '../../../services/file_cache/saved_file.dart';
+import '../../../services/file_cache/coffee_file.dart';
+import '../../../services/file_cache/file_cache_providers.dart';
 
 class FavoritesGrid extends ConsumerWidget {
   const FavoritesGrid({
@@ -12,7 +12,7 @@ class FavoritesGrid extends ConsumerWidget {
     super.key,
   });
 
-  final List<SavedFile> files;
+  final List<CoffeeFile> files;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
